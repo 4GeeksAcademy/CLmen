@@ -12,9 +12,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			contacto: [
+				{
+				  "name": "",
+				  "phone": "",
+				  "email": "",
+				  "address": "",
+				  "id": ""
+				}],
+
+			contacts:{},
 		},
 		actions: {
+			traerConstactos: async () => {
+				const response = await fetch ("https://playground.4geeks.com/contact/agendas/edu");
+				const data = await response.json();
+				setStore({contacto: data.contacts });
+			},
+
+
+
+
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
